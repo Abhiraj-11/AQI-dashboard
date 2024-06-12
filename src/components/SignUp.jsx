@@ -20,23 +20,27 @@ import {
   googleProvider,
   signInWithPopup,
 } from "../firebase/FirebaseConfig";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const SignUp = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
+  const navigate = useNavigate();
   const createUser = () => {
     if (name !== "" && email !== "" && password !== "") {
-      createUserWithEmailAndPassword(auth, email, password);
+      createUserWithEmailAndPassword(auth, email, password)
+        .then((value) => {
+          navigate("/");
+        })
+        .catch((error) => console.error(error));
     }
   };
 
   const signupWithGoogle = () => {
     signInWithPopup(auth, googleProvider);
   };
-
+  console.log(name, email, password);
   return (
     <Box p={7} sx={{ backgroundColor: "#d8f0eb" }}>
       <Box

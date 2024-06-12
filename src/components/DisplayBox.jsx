@@ -10,9 +10,10 @@ const DisplayBox = ({ field, type, sensorValue, unit, maxValue }) => {
         mx={2}
         my={2}
         sx={{
-          width: "28rem",
+          width: "23rem",
           display: "inline-block",
           justifyContent: "space-between",
+          height: "",
         }}
       >
         <Box
@@ -32,7 +33,12 @@ const DisplayBox = ({ field, type, sensorValue, unit, maxValue }) => {
           <Gauge sensorValue={sensorValue} unit={unit} maxValue={maxValue} />
         )}
         {type === "graph" && (
-          <Graph sensorValue={sensorValue} maxValue={maxValue} />
+          <Graph
+            field={field}
+            sensorValue={sensorValue}
+            maxValue={maxValue}
+            unit={unit}
+          />
         )}
         {type === "map" && <Map />}
       </Box>

@@ -29,7 +29,8 @@ const Home = ({ login, setLogin }) => {
     <>
       <Navbar login={login} setLogin={setLogin} />
       <Box
-        margin={10}
+        my={10}
+        mx={5}
         sx={{ display: "flex", flexWrap: "wrap", justifyContent: "center" }}
       >
         <DisplayBox
@@ -60,27 +61,36 @@ const Home = ({ login, setLogin }) => {
           unit="AQI"
           maxValue="500"
         />
-        <Box>
+        <Box
+          sx={{
+            display: { xs: "flex" },
+            flexWrap: "wrap",
+            justifyContent: "center",
+          }}
+        >
           <DisplayBox
-            field="MQ-135"
+            field="MQ - 135"
             type="graph"
+            unit="[ppm]"
             sensorValue={MQ135}
             maxValue="300"
           />
           <DisplayBox
-            field="MQ-7"
+            field="MQ - 7"
             type="graph"
+            unit="[ppm]"
             sensorValue={MQ7}
             maxValue="50"
           />
           <DisplayBox
-            field="PM-2.5"
+            field="PM - 2.5"
             type="graph"
+            unit="[µg/m3]"
             sensorValue={PM25}
             maxValue="100"
           />
+          <DisplayBox field="Map" type="map" />
         </Box>
-        <DisplayBox field="Map" type="map" />
       </Box>
       <Footer />
     </>

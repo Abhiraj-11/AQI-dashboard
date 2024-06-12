@@ -17,7 +17,7 @@ const Gauge = ({ sensorValue, unit, maxValue }) => {
   }
 
   return (
-    <Box sx={{ border: 8, borderColor: "#e1e1e1", pt: 2 }}>
+    <Box sx={{ width: "353px", border: 8, borderColor: "#e1e1e1", pt: 2 }}>
       <GaugeComponent
         value={sensorValue}
         type="radial"
@@ -56,7 +56,7 @@ const Gauge = ({ sensorValue, unit, maxValue }) => {
             },
             defaultTickValueConfig: {
               style: {
-                fontSize: "15px",
+                fontSize: "12px",
                 fill: "gray",
                 fontWeight: "bold",
               },
@@ -68,7 +68,7 @@ const Gauge = ({ sensorValue, unit, maxValue }) => {
         maxValue={maxValue}
         arc={{
           colorArray: ["#5BE12C", "#EA4228"],
-          subArcs: [{ limit: 10 }, { limit: 30 }, {}, {}, {}],
+          subArcs: [{}, {}, {}, {}, {}],
           padding: 0.02,
           width: 0.3,
         }}

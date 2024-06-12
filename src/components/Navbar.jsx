@@ -1,6 +1,5 @@
 import SensorsIcon from "@mui/icons-material/Sensors";
 
-import MenuIcon from "@mui/icons-material/Menu";
 import {
   Button,
   IconButton,
@@ -11,27 +10,53 @@ import {
 } from "@mui/material";
 import { Link } from "react-router-dom";
 import DropDownMenu from "./DropDownMenu";
+import Hamburger from "./Hamburger";
 const Navbar = ({ login, setLogin }) => {
   return (
     <>
-      <AppBar position="fixed" sx={{ backgroundColor: "rgb(7 128 107)" }}>
-        <Toolbar>
-          <IconButton
-            size="large"
-            edge="start"
-            color="inherit"
-            aria-label="logo"
-            sx={{ display: { xs: "none", md: "flex" } }}
+      <AppBar
+        position="fixed"
+        sx={{
+          backgroundColor: "rgb(7 128 107)",
+        }}
+      >
+        <Toolbar
+          sx={{
+            display: "flex",
+            flexWrap: "wrap",
+            justifyContent: "space-between",
+          }}
+        >
+          <Link
+            to="/"
+            style={{
+              color: "white",
+              textDecoration: "none",
+              display: "flex",
+              flexWrap: "wrap",
+            }}
           >
-            <SensorsIcon />
-          </IconButton>
-          <Typography
-            variant="h5"
-            component="div"
-            sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}
-          >
-            AQI Sensor Data
-          </Typography>
+            <IconButton
+              size="large"
+              edge="start"
+              color="inherit"
+              aria-label="logo"
+              sx={{ display: { xs: "none", md: "flex" } }}
+            >
+              <SensorsIcon />
+            </IconButton>
+            <Typography
+              variant="h5"
+              component="div"
+              sx={{
+                flexGrow: 1,
+                display: { xs: "none", md: "flex" },
+                margin: "auto",
+              }}
+            >
+              AQI Sensor Data
+            </Typography>
+          </Link>
           <Box sx={{ display: { xs: "none", md: "flex" } }}>
             <Link to="/" style={{ color: "white", margin: "auto" }}>
               <Button
@@ -60,14 +85,7 @@ const Navbar = ({ login, setLogin }) => {
             <DropDownMenu login={login} setLogin={setLogin} />
           </Box>
           <Box sx={{ flexGrow: 100, display: { xs: "flex", md: "none" } }}>
-            <IconButton
-              size="large"
-              edge="end"
-              color="inherit"
-              aria-label="logo"
-            >
-              <MenuIcon />
-            </IconButton>
+            <Hamburger />
           </Box>
           <IconButton
             size="large"

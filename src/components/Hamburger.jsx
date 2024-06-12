@@ -1,9 +1,9 @@
 import { IconButton, Menu, MenuItem } from "@mui/material";
-import AccountCircleIcon from "@mui/icons-material/AccountCircle";
-import { useState } from "react";
+import MenuIcon from "@mui/icons-material/Menu";
 import { Link } from "react-router-dom";
+import { useState } from "react";
 
-const DropDownMenu = ({ login, setLogin }) => {
+const Hamburger = () => {
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
   const handleClick = (event) => {
@@ -11,12 +11,6 @@ const DropDownMenu = ({ login, setLogin }) => {
   };
   const handleClose = () => {
     setAnchorEl(null);
-  };
-  const toggleRoute = () => {
-    if (login) {
-      setLogin(false);
-      return "/SignIn";
-    }
   };
   return (
     <>
@@ -26,9 +20,8 @@ const DropDownMenu = ({ login, setLogin }) => {
         color="inherit"
         aria-label="logo"
         onClick={handleClick}
-        sx={{ "&:hover": { backgroundColor: "#0c7562" } }}
       >
-        <AccountCircleIcon
+        <MenuIcon
           aria-controls={open ? "basic-menu" : undefined}
           aria-haspopup="true"
           aria-expanded={open ? "true" : undefined}
@@ -43,18 +36,21 @@ const DropDownMenu = ({ login, setLogin }) => {
           "aria-labelledby": "basic-button",
         }}
       >
-        <Link to="/Profile" style={{ textDecoration: "none", color: "black" }}>
-          <MenuItem onClick={handleClose}>Profile</MenuItem>
+        <Link to="/" style={{ textDecoration: "none", color: "black" }}>
+          <MenuItem onClick={handleClose}>Home</MenuItem>
+        </Link>
+        <Link to="/About" style={{ textDecoration: "none", color: "black" }}>
+          <MenuItem onClick={handleClose}>About</MenuItem>
         </Link>
         <Link
-          to={toggleRoute()}
+          to="/ContactUs"
           style={{ textDecoration: "none", color: "black" }}
         >
-          <MenuItem onClick={handleClose}>Logout</MenuItem>
+          <MenuItem onClick={handleClose}>Contact Us</MenuItem>
         </Link>
       </Menu>
     </>
   );
 };
 
-export default DropDownMenu;
+export default Hamburger;
